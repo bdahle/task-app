@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
 class Overview extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    return <div>{this.props.tasks}</div>;
+    const taskItems = this.props.tasks.map((task) => <li>{task}</li>);
+
+    return (
+      <div>
+        <ul>{taskItems}</ul>
+      </div>
+    );
   }
 }
 

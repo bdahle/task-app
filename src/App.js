@@ -9,20 +9,25 @@ class App extends Component {
       tasks: [],
     };
 
+    this.inputRef = React.createRef();
     this.addTask = this.addTask.bind(this);
   }
 
-  addTask() {
+  addTask(task) {
+    this.inputRef.current.value = "";
     this.setState({
-      tasks: ["fgesge", "eskgmesk"],
+      tasks: [...this.state.tasks, task],
     });
   }
 
   render() {
     return (
       <div>
-        <input></input>
-        <button type="submit" onClick={this.addTask}>
+        <input ref={this.inputRef}></input>
+        <button
+          type="button"
+          onClick={() => this.addTask(this.inputRef.current.value)}
+        >
           Submit
         </button>
         <Overview tasks={this.state.tasks} />
